@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Justin's Scrabble</title>
+</head>
+<body>
+    <div class="scrabble">
+        <div class="board" id="board"></div>
+        <div class="buttons">
+            <div class="score human">Your Score: 0</div>
+            <div class="score cpu">CPU Score: 0</div>
+            <div class="tiles">Tiles Remaining: 86</div>
+            <div class="word human">CPU:</div>
+            <div class="word cpu">You:</div>
+            <button>Exchange All Tiles</button>
+            <button>End Game</button>
+            <button>Reset Rack</button>
+            <button>Pass Turn</button>
+            <button>Submit Word</button>
+            <div class="rack">
+                <div class="tile" id="tile-one"  draggable="true">
+                    <span class="letter">A</span>
+                    <sub class="letter-score">1</sub>
+                </div>
+                <div class="tile">
+                    <span class="letter">A</span>
+                    <sub class="letter-score">9</sub>
+                </div>
+                <div class="tile">
+                    <span class="letter">A</span>
+                    <sub class="letter-score">6</sub>
+                </div>
+                <div class="tile">
+                    <span class="letter">A</span>
+                    <sub class="letter-score">6</sub>
+                </div>
+                <div class="tile">
+                    <span class="letter">A</span>
+                    <sub class="letter-score">3</sub>
+                </div>
+                <div class="tile">
+                    <span class="letter">A</span>
+                    <sub class="letter-score">10</sub>
+                </div>
+                <div class="tile">
+                    <span class="letter">A</span>
+                    <sub class="letter-score">10</sub>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+    <script src="scrabble.js" type="module"></script>
+</body>
+</html>
