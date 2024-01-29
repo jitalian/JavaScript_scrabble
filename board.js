@@ -9,7 +9,10 @@ export class Board {
 
     start = [7, 7];
 
-    letter_values = this.initializeLetterValues();
+    int_letter_values = this.initializeLetterValues();
+    final_letter_values = this.initializeLetterValues();
+    moved_tiles = [];
+
 
     createBoard() {
         let board = document.querySelector('.board');
@@ -23,13 +26,7 @@ export class Board {
                 cell.addEventListener('dragover', function (event) {
                     event.preventDefault();
                 })
-                cell.addEventListener('drop', function (event) {
-                    console.log(cell.id);
-                    event.preventDefault();
-                    let changedCell = document.getElementById(cell.id);
-                    changedCell.innerText = event.dataTransfer.getData("text")
-
-                })
+                cell.addEventListener('drop', (event) => this.placeTile(event, cell))
             }
         }
         for (let tile of this.triple_word_squares) {
@@ -56,9 +53,8 @@ export class Board {
 
         let cell = document.getElementById(`${this.start[0]}-${this.start[1]}`);
         cell.classList.add('double-word');
-        cell.innerText = "*";
-
-        console.log(this.letter_values)
+        cell.innerText = "Start";
+        cell.style.fontSize = "1.25rem";
 
     }
 
@@ -73,4 +69,32 @@ export class Board {
         }
         return array;
     }
+
+    placeTile(event, location) {
+        event.preventDefault();
+        let changedCell = document.getElementById(location.id);
+        changedCell.innerText = "";
+        let draggableElement = document.getElementById(event.dataTransfer.getData("text"));
+        changedCell.appendChild(draggableElement)
+        console.log(event)
+        // changedCell.classList.add('placed-tile');
+
+        // let letter = document.createElement('span');
+        // let points = document.createElement('span');
+
+        // letter.classList.add('letter');
+        // points.classList.add('letter-score');
+
+        // letter.innerText = event.dataTransfer.getData("text")[0];
+        // points.innerText = event.dataTransfer.getData("text").slice(2);
+
+        // changedCell.appendChild(letter);
+        // changedCell.appendChild(points);
+
+        // let location_coords = changedCell.id.split("-");
+        // this.moved_tiles.push([location_coords[0], location_coords[1]])
+        // console.log(this.moved_tiles)
+    }
+
+    updateBoard() { }
 }

@@ -55,6 +55,34 @@ h1 {
 }
 
 
+
+.triple-word {
+    background-color:var(--red);
+}
+
+.triple-letter {
+    background-color: var(--blue);
+}
+
+.double-word {
+    background-color: var(--pink);
+}
+
+.double-letter {
+    background-color: var(--light-blue);
+}
+
+.placed-tile {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: var(--tile-yellow);
+
+}
+
+
 .buttons {
     margin: 1rem;
     background-color: var(--dark-grey);
@@ -139,20 +167,4 @@ button:hover {
     position: absolute;
     bottom: 1px;
     right: 1px;
-}
-
-.triple-word {
-    background-color:var(--red);
-}
-
-.triple-letter {
-    background-color: var(--blue);
-}
-
-.double-word {
-    background-color: var(--pink);
-}
-
-.double-letter {
-    background-color: var(--light-blue);
 }
