@@ -54,7 +54,7 @@ export class Board {
         let cell = document.getElementById(`${this.start[0]}-${this.start[1]}`);
         cell.classList.add('double-word');
         cell.innerText = "Start";
-        cell.style.fontSize = "1.25rem";
+        cell.style.fontSize = "1.4rem";
 
     }
 
@@ -73,7 +73,7 @@ export class Board {
     placeTile(event, location) {
         event.preventDefault();
         let changedCell = document.getElementById(location.id);
-        changedCell.innerText = "";
+        changedCell.style.fontSize = 0;
         let draggableElement = document.getElementById(event.dataTransfer.getData("text"));
         changedCell.appendChild(draggableElement)
         console.log(event)

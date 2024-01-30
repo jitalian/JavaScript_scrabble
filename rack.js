@@ -1,11 +1,10 @@
-import { TilesBag } from "./bag.js";
-
 export class Rack {
 
     constructor(tilesBag) {
         this.tilesBag = tilesBag;
         this.rackArray = [];
-        for (let i = 0; i < 7; i++) {
+        this.rackSize = 7
+        for (let i = 0; i < this.rackSize; i++) {
             let randomTile = this.tilesBag.getRandomTile();
             this.rackArray.push([randomTile, this.tilesBag.getTilePoints(randomTile)]);
         }
@@ -19,10 +18,10 @@ export class Rack {
         })
 
         rack.addEventListener('drop', function (event) {
-            rack.appendChild(document.getElementById(event.dataTransfer.getData("text")))
+            rack.appendChild(document.getElementById(event.dataTransfer.getData("text")));
         })
 
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < this.rackSize; i++) {
             let newTile = document.createElement('div');
             newTile.classList.add('tile');
             newTile.id = `tile-${i}`
@@ -35,6 +34,7 @@ export class Rack {
     createTile(tileID, index) {
 
         let tile = document.getElementById(tileID);
+        let parentElement;
 
         let letter = document.createElement('span');
         letter.classList.add('letter');
@@ -47,8 +47,12 @@ export class Rack {
         tile.appendChild(score);
 
         tile.addEventListener('dragstart', function (event) {
+            parentElement = event.target.parentElement;
             event.dataTransfer.setData("text", event.target.id);
-            console.log(event.target.id)
+        })
+
+        tile.addEventListener('dragend', function (event) {
+            parentElement.style.fontSize = '1.4rem';
         })
     }
 }
