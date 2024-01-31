@@ -7,19 +7,20 @@
     <title>Justin's Scrabble</title>
 </head>
 <body>
-    <div class="scrabble">
+    <div class="loading" id="loading">Loading...</div>
+    <div class="scrabble hide" id="scrabble">
         <div class="board" id="board"></div>
         <div class="buttons">
             <div class="score human">Your Score: 0</div>
             <div class="score cpu">CPU Score: 0</div>
-            <div class="tiles">Tiles Remaining: 86</div>
+            <div class="tiles" id="tiles">Tiles Remaining: 86</div>
             <div class="word human">CPU:</div>
             <div class="word cpu">You:</div>
             <button>Exchange All Tiles</button>
             <button>End Game</button>
             <button id="reset-rack">Reset Rack</button>
             <button>Pass Turn</button>
-            <button>Submit Word</button>
+            <button id="submit">Submit Word</button>
             <div class="rack" id="rack"></div>
         </div>
     </div>

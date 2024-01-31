@@ -8,13 +8,17 @@ export class Trie {
         this.root = new TrieNode();
         this.words = words;
         // this.lines = words.split('\n');
-        this.lines = words
+
+        this.lines = words;
         for (let i = 0; i < this.lines.length; i++) {
             this.insertWord(this.lines[i].slice(1, -1))
         }
-        // for (let i = 0; i < 10; i++) {
-        //     console.log(this.lines[i].slice(1, -1));
-        // }
+
+        //Simple loading screen while dictionary loads
+        let scrabble = document.getElementById('scrabble');
+        let loading = document.getElementById('loading');
+        scrabble.classList.remove('hide');
+        loading.classList.add('hide');
     }
 
     insertWord(word) {
@@ -50,7 +54,4 @@ export class Trie {
         }
         return true;
     }
-
-
-
 }

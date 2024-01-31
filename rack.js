@@ -4,20 +4,16 @@ export class Rack {
         this.tilesBag = tilesBag;
         this.rackArray = [];
         this.rackSize = 7
-        for (let i = 0; i < this.rackSize; i++) {
-            let randomTile = this.tilesBag.getRandomTile();
-            this.rackArray.push([randomTile, this.tilesBag.getTilePoints(randomTile)]);
-        }
+        this.currentWord = [];
     }
 
     createRack() {
-        console.log(this.rackArray)
         let rack = document.getElementById('rack');
         rack.addEventListener('dragover', function (event) {
             event.preventDefault();
         })
 
-        rack.addEventListener('drop', function (event) {
+        rack.addEventListener('drop', (event) => {
             rack.appendChild(document.getElementById(event.dataTransfer.getData("text")));
         })
 
@@ -27,23 +23,24 @@ export class Rack {
             newTile.id = `tile-${i}`
             newTile.draggable = 'true';
             rack.appendChild(newTile);
-            this.createTile(newTile.id, i)
+            this.createTile(newTile.id)
         }
     }
 
-    createTile(tileID, index) {
+    createTile(tileID) {
 
         let tile = document.getElementById(tileID);
         let parentElement;
+        let randomTile = this.tilesBag.getRandomTile();
 
         let letter = document.createElement('span');
         letter.classList.add('letter');
-        letter.innerText = this.rackArray[index][0];
+        letter.innerText = randomTile;
         tile.appendChild(letter);
 
         let score = document.createElement('sub');
         score.classList.add('letter-score');
-        score.innerText = this.rackArray[index][1];
+        score.innerText = this.tilesBag.getTilePoints(randomTile)
         tile.appendChild(score);
 
         tile.addEventListener('dragstart', function (event) {
@@ -51,8 +48,17 @@ export class Rack {
             event.dataTransfer.setData("text", event.target.id);
         })
 
-        tile.addEventListener('dragend', function (event) {
+        tile.addEventListener('dragend', (event) => {
             parentElement.style.fontSize = '1.4rem';
+            if (parentElement.id !== 'rack') {
+                for (let i = 0; i < this.currentWord.length; i++) {
+                    if (this.currentWord[i][0] === parentElement.id) {
+                        this.currentWord.splice(i, 1);
+                        break;
+                    }
+                }
+            }
         })
+
     }
 }

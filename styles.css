@@ -168,3 +168,11 @@ button:hover {
     bottom: 1px;
     right: 1px;
 }
+
+.hide {
+    display: none;
+}
+
+.loading {
+    font-size: 5rem;
+}
